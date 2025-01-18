@@ -52,3 +52,22 @@ function solve(board: Board): boolean {
     return true;
 }
 
+
+// Remove numbers to create a puzzle
+function removeNumbers(board: Board, numOfHoles: number): Board {
+    const puzzle = board.map((row) => [...row]);
+    let holes = numOfHoles;
+
+    while (holes > 0) {
+        const row = Math.floor(Math.random() * 9);
+        const col = Math.floor(Math.random() * 9);
+
+        if (puzzle[row][col] !== 0) {
+            puzzle[row][col] = 0;
+            holes--;
+        }
+    }
+
+    return puzzle;
+} 
+
