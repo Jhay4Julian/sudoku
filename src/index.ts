@@ -53,6 +53,14 @@ function solve(board: Board): boolean {
 }
 
 
+// Generate a complete Sudoku board
+function generateCompleteBoard(): Board {
+    const board: Board = Array.from({length: 9}, () => Array(9).fill(0));
+    solve(board);
+    return board;
+}
+
+
 // Remove numbers to create a puzzle
 function removeNumbers(board: Board, numOfHoles: number): Board {
     const puzzle = board.map((row) => [...row]);
@@ -103,4 +111,5 @@ function countSolutions(board: Board): number {
 function isUnique(board: Board): boolean {
     return countSolutions(board) === 1;
 }
+
 
