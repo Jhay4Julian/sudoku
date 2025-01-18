@@ -119,6 +119,7 @@ function generateSudoku(difficulty: 'easy' | 'medium' | 'hard' = 'medium'): Boar
     const holes = { easy: 30, medium: 40, hard: 50 }[difficulty] || 40;
     let puzzle = removeNumbers(fullBoard, holes);
 
+    // Ensure uniqueness of the puzzle
     while (!isUnique(puzzle)) {
         puzzle = removeNumbers(fullBoard, holes);
     }
