@@ -98,3 +98,9 @@ function countSolutions(board: Board): number {
     return solutions;
 }
 
+
+// Ensure the puzzle has a unique solution
+function isUnique(board: Board): boolean {
+    return countSolutions(board) === 1;
+}
+
