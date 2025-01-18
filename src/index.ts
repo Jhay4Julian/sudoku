@@ -113,3 +113,15 @@ function isUnique(board: Board): boolean {
 }
 
 
+// Generate a Sudoku puzzle with a specific difficulty
+function generateSudoku(difficulty: 'easy' | 'medium' | 'hard' = 'medium'): Board {
+    const fullBoard = generateCompleteBoard();
+    const holes = { easy: 30, medium: 40, hard: 50 }[difficulty] || 40;
+    let puzzle = removeNumbers(fullBoard, holes);
+
+    while (!isUnique(puzzle)) {
+        puzzle = removeNumbers(fullBoard, holes);
+    }
+
+    return puzzle;
+}
