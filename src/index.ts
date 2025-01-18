@@ -71,3 +71,30 @@ function removeNumbers(board: Board, numOfHoles: number): Board {
     return puzzle;
 } 
 
+
+// Count the number of solutions for a board
+function countSolutions(board: Board): number {
+    let solutions = 0;
+
+    function helper(board: Board): void {
+        for (let row = 0; row < 9; row++) {
+            for (let col = 0; col < 9; col++) {
+                if (board[row][col] === 0) {
+                    for (let num = 1; num <= 9; num++) {
+                        if (isValid(board, row, col, num)) {
+                            board[row][col] = num;
+                            helper(board);
+                            board[row][col] = 0;
+                        }
+                    }
+                    return;
+                }
+            }
+        }
+        solutions++;
+    }
+
+    helper(board);
+    return solutions;
+}
+
