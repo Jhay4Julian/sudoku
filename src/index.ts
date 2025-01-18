@@ -9,6 +9,13 @@ function isValid(board: Board, row: number, col: number, num: number): boolean {
         return false;
     }
 
+     // Check column
+     for (let i = 0; i < 9; i++) {
+        if (board[i][col] === num) {
+            return false
+        };
+    }
+
 
     return true;
 }
